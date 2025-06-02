@@ -5,10 +5,10 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
-import { ProductsComponent } from './products/products.component';
+import { ProductsComponent } from './Components/products/products.component';
 import { HomeComponent } from './Components/home/home.component';
 import { FormsModule } from '@angular/forms';
-import { ProductListComponent } from './products/product-list/product-list.component';
+import { ProductListComponent } from './Components/products/product-list/product-list.component';
 
 @NgModule({
   declarations: [
