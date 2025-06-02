@@ -3,14 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
+import { HeaderComponent } from './Components/header/header.component';
+import { FooterComponent } from './Components/footer/footer.component';
+import { ProductsComponent } from './products/products.component';
+import { HomeComponent } from './Components/home/home.component';
+import { FormsModule } from '@angular/forms';
+import { ProductListComponent } from './products/product-list/product-list.component';
 
 @NgModule({
   declarations: [
-    App
+    App,
+    HeaderComponent,
+    FooterComponent,
+    ProductsComponent,
+    HomeComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule 
   ],
   providers: [
     provideBrowserGlobalErrorListeners()
