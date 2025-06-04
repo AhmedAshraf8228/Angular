@@ -5,27 +5,35 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
-import { ProductsComponent } from './Components/products/products.component';
 import { HomeComponent } from './Components/home/home.component';
 import { FormsModule } from '@angular/forms';
-import { ProductListComponent } from './Components/products/product-list/product-list.component';
+import { ProductListComponent } from './Components/home/product-list/product-list.component';
+import { FilterComponent } from './Components/home/filter/filter.component';
+import {provideHttpClient} from '@angular/common/http';
+import { NameLenPipe } from './pipes/name-len-pipe';
+import { DescriptionLenPipe } from './pipes/description-len-pipe';
+import { ProductFilterPipePipe } from './pipes/product-filter-pipe-pipe';
 
 @NgModule({
   declarations: [
     App,
     HeaderComponent,
     FooterComponent,
-    ProductsComponent,
     HomeComponent,
-    ProductListComponent
+    ProductListComponent,
+    FilterComponent,
+    NameLenPipe,
+    DescriptionLenPipe,
+    ProductFilterPipePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule 
+    FormsModule
   ],
   providers: [
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient()
   ],
   bootstrap: [App]
 })

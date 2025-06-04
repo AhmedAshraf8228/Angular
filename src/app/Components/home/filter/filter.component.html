@@ -1,0 +1,62 @@
+<div class="container my-4">
+  <h2 class="text-center mb-3">Our Products</h2>
+
+    <!-- Filter Form -->
+  <div class="card mb-3">
+    <div class="card-header fw-semibold">Filter Products</div>
+    <div class="card-body">
+      <div  class="row g-3 align-items-end">
+
+        <!-- Category -->
+        <div class="col-md-3">
+          <label class="form-label">Category</label>
+          <select class="form-select" [(ngModel)]="filters.category" name="category">
+            <option value="All">All</option>
+            <option *ngFor="let category of categories" [value]="category.name">
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Product Title -->
+        <div class="col-md-3">
+          <label class="form-label">Product Title</label>
+          <input type="text" class="form-control" placeholder="Search by title..."
+                 [(ngModel)]="filters.title"  name="title">
+        </div>
+
+        <!-- min Price -->
+        <div class="col-md-3">
+          <label class="form-label">Min Price ($)</label>
+          <input type="number" class="form-control" placeholder="Enter min price"
+                 [(ngModel)]="filters.minPrice" name="minPrice">
+        </div>
+
+        <!-- Max Price -->
+        <div class="col-md-3">
+          <label class="form-label">Max Price ($)</label>
+          <input type="number" class="form-control" placeholder="Enter max price"
+                 [(ngModel)]="filters.maxPrice" name="maxPrice">
+        </div>
+
+        <!-- Apply Button -->
+        <div class="col-12">
+          <button (click)="onFilterUpdate()" class="btn btn-primary w-100">Apply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Current Filter Values -->
+  <div class="card">
+    <div class="card-header fw-semibold">Current Filter Values</div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-3"><strong>Category:</strong> {{ filters.category || 'All' }}</div>
+        <div class="col-md-3"><strong>Title Search:</strong> {{ filters.title || 'None' }}</div>
+        <div class="col-md-3"><strong>Min Price:</strong> {{ filters.minPrice || 'None' }}</div>
+        <div class="col-md-3"><strong>Max Price:</strong> {{ filters.maxPrice || 'None' }}</div>
+      </div>
+    </div>
+  </div>
+</div>

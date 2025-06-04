@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  currentFilter =
+    { title: '', category: 'All', minPrice: null, maxPrice: null };
+
+  updateFilter(e: any) {
+    this.currentFilter = { ...e };
+  }
 
 }
