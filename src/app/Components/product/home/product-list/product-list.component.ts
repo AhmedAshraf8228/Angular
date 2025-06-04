@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {Product} from '../../../models/product';
-import {ProductService} from '../../../services/product';
+import {Product} from '../../models/product';
+import {ProductService} from '../../services/product';
+import {CartService} from '../../services/cart-service';
 
 @Component({
   selector: 'app-product-list',
@@ -12,7 +13,7 @@ export class ProductListComponent implements OnInit   {
 
   products: Product[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService ,private cartService: CartService) {}
 
   ngOnInit() {
     this.productService.getProducts().subscribe(
@@ -28,6 +29,18 @@ export class ProductListComponent implements OnInit   {
   @Input() filterData: any;
 
 
+  addToCart(product: any) {
+    this.cartService.addToCart({
+      productId: product.id,
+      title: product.title,
+      price: product.price,
+      quantity: 1,
+      image: product.thumbnail
+    });
+
+    // Optional toast
+    alert(`${product.title} added to cart!`);
 
 
+  }
 }

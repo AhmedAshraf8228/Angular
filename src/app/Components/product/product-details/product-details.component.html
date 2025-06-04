@@ -1,0 +1,64 @@
+<div class="container py-4" *ngIf="product">
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item"><a routerLink="/products">Shop</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
+    </ol>
+  </nav>
+
+  <!-- Product Info Row -->
+  <div class="row g-5">
+    <!-- Product Images -->
+    <div class="col-md-6">
+      <!-- Main Image -->
+      <img [src]="selectedImage || product.thumbnail" class="img-fluid rounded mb-3 shadow-sm" alt="{{ product.title }}">
+
+      <!-- Thumbnail Images -->
+      <div class="d-flex gap-2">
+        <img *ngFor="let img of product.images"
+             [src]="img"
+             (click)="selectedImage = img"
+             class="img-thumbnail"
+             [class.border-primary]="selectedImage === img"
+             style="height: 60px; width: 60px; cursor: pointer;">
+      </div>
+    </div>
+
+    <!-- Product Details -->
+    <div class="col-md-6">
+      <h4 class="fw-bold">{{ product.title }}</h4>
+      <p class="text-muted">{{ product.description }}</p>
+
+      <!-- Rating -->
+      <div class="mb-2">
+        <span class="text-warning">&#9733; {{ product.rating }}</span>
+        <small class="text-muted">({{ product.reviews.length }} Reviews)</small>
+      </div>
+
+      <!-- Price and Discount -->
+      <div class="mb-3">
+        <h5 class="text-success fw-bold">${{ product.price }}</h5>
+        <small *ngIf="product.discountPercentage" class="text-muted text-decoration-line-through">
+          ${{ (product.price / (1 - product.discountPercentage / 100)).toFixed(2) }}
+        </small>
+        <span *ngIf="product.discountPercentage" class="badge bg-danger ms-2">
+          {{ product.discountPercentage.toFixed(2) }}% OFF
+        </span>
+      </div>
+
+      <!-- Quantity Selector -->
+      <div class="input-group mb-3" style="width: 140px;">
+        <button class="btn btn-outline-secondary" (click)="decreaseQty()">−</button>
+        <input type="text" class="form-control text-center" [value]="quantity" readonly>
+        <button class="btn btn-outline-secondary" (click)="increaseQty()">+</button>
+      </div>
+
+      <!-- Add to Cart Button -->
+      <button class="btn btn-dark btn-lg w-100" (click)="addToCart()">
+        <i class="bi bi-cart me-2"></i> Add to Cart
+      </button>
+    </div>
+  </div>
+</div>

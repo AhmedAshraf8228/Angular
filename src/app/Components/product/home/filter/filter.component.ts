@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, input, OnInit, Output} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Category} from '../../../models/category';
-import {ProductService} from '../../../services/product';
+import {Category} from '../../models/category';
+import {ProductService} from '../../services/product';
 
 @Component({
   selector: 'app-filter',
