@@ -12,7 +12,7 @@
           <label class="form-label">Category</label>
           <select class="form-select" [(ngModel)]="filters.category" name="category">
             <option value="All">All</option>
-            <option *ngFor="let category of categories" [value]="category.name">
+            <option *ngFor="let category of categories" [value]="category.slug">
               {{ category.name }}
             </option>
           </select>
